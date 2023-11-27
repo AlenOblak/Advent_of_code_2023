@@ -1,1 +1,3 @@
-# Advent_of_code_2023
+# Advent of code 2023
+
+Solutions to challenges in [Advent of code 2023](https://adventofcode.com/) in PHP.
