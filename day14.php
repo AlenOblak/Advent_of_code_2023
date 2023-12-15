@@ -2,10 +2,7 @@
 
 $lines = file('day14_input.txt', FILE_IGNORE_NEW_LINES);
 
-$map = array();
-foreach ($lines as $i => $line)
-    $map[] = str_split($line);
-
+$map = array_map(fn($line) => str_split($line), $lines);
 
 // part 1
 echo load(spin_north($map))."\n";
