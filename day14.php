@@ -12,22 +12,18 @@ $load = array();
 for($i = 1; ; $i++) {
     $map = spin($map);
     $num = load($map);
-    if($i > 200) {
-        if(in_array($num, $load)) {
-            $j = array_search($num, $load);
-            if($load[$i-1] == $load[$j-1]) {
-                $cycle = $i-$j;
-                break;
-            }
-        }
+    $hash = sha1(json_encode($map));
+    if(array_key_exists($hash, $load)) {
+        $cycle = $i - $load[$hash][0];
+        break;
     }
-    $load[$i] = $num;
+    $load[$hash] = array($i, $num);
 }
 
-$cycles = 1000000000;
-while($cycles > count($load))
-    $cycles -= $cycle;
-echo $load[$cycles]."\n";
+$cycle += (1000000000 % $cycle);
+foreach ($load as $l)
+    if($l[0] == $cycle)
+        echo $l[1]."\n";
 
 function load($map) {
     $sum = 0;

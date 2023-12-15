@@ -5,10 +5,7 @@ $lines = file('day15_input.txt', FILE_IGNORE_NEW_LINES);
 $seq = explode(',', $lines[0]);
 
 // part 1
-$sum = 0;
-foreach ($seq as $s)
-    $sum += calc_hash($s);
-echo $sum."\n";
+echo array_sum(array_map('calc_hash', $seq))."\n";
 
 // part 2
 foreach ($seq as $s) {
